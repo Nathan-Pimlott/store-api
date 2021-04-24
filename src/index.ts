@@ -1,9 +1,15 @@
 import * as express from 'express';
-import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
+
 const app = express();
 
+require('dotenv').config();
+
+
 import routes from './routes';
+
+app.use(cors())
 
 const {
     PORT = 3000,

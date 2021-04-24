@@ -1,28 +1,9 @@
-import { Request, Response } from 'express'
-import { authenticate, createUser } from "../controller/authenticate";
+import authRoutes from './auth';
+import productRoutes from './product';
+import productSizeRoutes from './productSize';
 
 export default (app: any) => {
-    app.post('/user/authenticate', async (req: Request, res: Response) => {
-        console.log('Req: ', req.body);
-        const authenticated = await authenticate(req.body);
-        res.send({
-            authenticated
-        });
-    });
-
-    app.post('/user/create', async (req: Request, res: Response) => {
-        console.log('Req: ', req.body);
-        const created = await createUser(req.body);
-        res.send({
-            created
-        });
-    });
-
-    app.post('/user/update', async (req: Request, res: Response) => {
-        console.log('Req: ', req.body);
-        const created = await createUser(req.body);
-        res.send({
-            created
-        });
-    });
+    authRoutes(app),
+    productRoutes(app),
+    productSizeRoutes(app)
 }
