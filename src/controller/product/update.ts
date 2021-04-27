@@ -25,7 +25,7 @@ export const updateProduct = async (body: IUpdateProductBody) => {
         
         
         // Return true if product is updated successfully
-        return response?.dataValues?.id;
+        return !!response?.dataValues?.id;
     } catch (error) {
         console.error(error);
         // Return false if the product isn't successfully updated
