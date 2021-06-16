@@ -1,9 +1,6 @@
-import authRoutes from './auth';
-import productRoutes from './product';
-import productSizeRoutes from './productSize';
+import authRoutes from "./auth";
+import productRoutes from "./product";
 
 export default (app: any) => {
-    authRoutes(app),
-    productRoutes(app),
-    productSizeRoutes(app)
-}
+    authRoutes(app), productRoutes(app);
+};
