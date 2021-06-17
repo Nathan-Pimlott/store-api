@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "test": "jest --verbose",
-    "build": "webpack"
+    "build": "webpack src/index.ts"
   },
   "keywords": [],
   "author": "",

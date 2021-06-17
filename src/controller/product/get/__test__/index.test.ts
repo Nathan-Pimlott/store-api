@@ -32,7 +32,7 @@ describe("Testing get product by id", () => {
             Product,
         };
     }
-    it("should return a valid product if there is no errors.", async () => {
+    it("should return valid products if there is no errors.", async () => {
         const { act, Product } = setup();
 
         const response = await act({ name: "test" });

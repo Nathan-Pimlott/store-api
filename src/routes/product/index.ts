@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
-import { getProducts } from "../../controller/product/get";
-import { getProductById } from "../../controller/product";
-import { createProduct } from "../../controller/product/create";
+import {
+    getProducts,
+    getProductById,
+    updateProduct,
+    createProduct,
+} from "../../controller/product";
 
 export default (app: any) => {
     app.post("/api/product/get", async (req: Request, res: Response) => {
@@ -16,7 +19,14 @@ export default (app: any) => {
         });
     });
 
-    app.post("/api/product/create", async (req: Request, res: Response) => {
+    app.put("/api/product", async (req: Request, res: Response) => {
+        const success = await updateProduct(req.body);
+        res.send({
+            success,
+        });
+    });
+
+    app.post("/api/product", async (req: Request, res: Response) => {
         const created = await createProduct(req.body);
         res.send({
             created,
