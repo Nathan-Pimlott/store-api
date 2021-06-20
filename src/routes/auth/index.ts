@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
-import { authenticate } from "../../controller/user/authenticate";
-import { createUser } from "../../controller/user/create";
-import { updatePassword } from "../../controller/user/update";
+import {
+    authenticate,
+    createUser,
+    updateUserPassword,
+} from "../../controller/user";
 
 export default (app: any) => {
     app.post("/api/user/authenticate", async (req: Request, res: Response) => {
@@ -19,10 +21,13 @@ export default (app: any) => {
         });
     });
 
-    app.put("/api/user/update", async (req: Request, res: Response) => {
-        const created = await updatePassword(req.body);
-        res.send({
-            created,
-        });
-    });
+    app.put(
+        "/api/user/update-password",
+        async (req: Request, res: Response) => {
+            const created = await updateUserPassword(req.body);
+            res.send({
+                created,
+            });
+        }
+    );
 };
