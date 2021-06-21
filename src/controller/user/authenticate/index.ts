@@ -1,6 +1,8 @@
 interface IUseAuthenticate {
     User: any;
     bcrypt: any;
+    jwt: any;
+    signature: string;
 }
 
 interface IAuthenticate {
@@ -8,7 +10,12 @@ interface IAuthenticate {
     password: string;
 }
 
-export function useAuthenticate({ User, bcrypt }: IUseAuthenticate) {
+export function useAuthenticate({
+    User,
+    bcrypt,
+    jwt,
+    signature,
+}: IUseAuthenticate) {
     return async function authenticate({ email, password }: IAuthenticate) {
         try {
             const response = await User.findAll({
@@ -22,8 +29,10 @@ export function useAuthenticate({ User, bcrypt }: IUseAuthenticate) {
                 throw Error();
             }
 
+            const decodedPassword = jwt.verify(password, signature);
+
             const validPassword = await bcrypt.compare(
-                password,
+                decodedPassword.password,
                 response[0].dataValues?.password
             );
 

@@ -17,6 +17,7 @@ DB_USERNAME=your_username
 DB_PASSWORD=your_password
 DB_ADDRESS=db_address
 DB_DIALECT=mysql
+JWT_SIGNATURE=match_with_ui
 ```
 
 -   Run `npm run dev`
