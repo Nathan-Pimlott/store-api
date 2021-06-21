@@ -1,5 +1,5 @@
 import * as Sequelize from "sequelize";
-import { sequelize } from "../../server";
+import { sequelize } from "../../db";
 
 export const User = sequelize.define(
     "user",

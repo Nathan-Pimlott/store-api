@@ -1,7 +1,6 @@
 import * as Sequelize from "sequelize";
-import { sequelize } from "../../server";
+import { sequelize } from "../../db";
 
-// Define the product model
 export const Product = sequelize.define(
     "product",
     {
@@ -27,5 +26,4 @@ export const Product = sequelize.define(
     }
 );
 
-// Export the synced model
 export default Product.sync({ alter: true });
